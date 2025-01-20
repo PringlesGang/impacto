@@ -5,6 +5,7 @@
 #include "../../vm/interface/input.h"
 #include "../../profile/scriptvars.h"
 #include "../../src/video/videosystem.h"
+#include "../../inputsystem.h"
 
 namespace Impacto {
 namespace CCLCC {
@@ -91,8 +92,15 @@ void DelusionTrigger::Update(float dt) {
           ScrWork[6336] = 0xffff;
         }
         if (LastDelusionState == DelusionState) {
-          if (!(PADinputButtonWentDown & PAD1L2)) {
-            if (PADinputButtonWentDown & PAD1R2) {
+          int padLeft = PAD1L2;
+          int padRight = PAD1R2;
+          if (Input::DirectionalInputForTrigger) {
+            padLeft |= PAD1LEFT;
+            padRight |= PAD1RIGHT;
+          }
+
+          if (!(PADinputButtonWentDown & padLeft)) {
+            if (PADinputButtonWentDown & padRight) {
               if (DelusionState == DS_Neutral) {
                 if (ScrWork[6414] == 0 || ScrWork[6414] == 2) {
                   Audio::Channels[Audio::AC_SSE]->Play("sysse", 11, false,
