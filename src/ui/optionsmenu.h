@@ -12,6 +12,7 @@ class OptionsMenu : public Menu {
   virtual void Hide() override;
   virtual void Update(float dt) override;
   virtual void UpdateInput(float dt);
+  virtual void ResetToDefault() {};
 
  protected:
   OptionsMenu();
