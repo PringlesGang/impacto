@@ -18,7 +18,7 @@ class BacklogMenu : public Menu {
   virtual void UpdateInput(float dt);
   virtual void Render();
 
-  void AddMessage(uint8_t* str, int audioId = -1);
+  void AddMessage(uint8_t* str, int audioId = -1, int characterId = 0);
   virtual void MenuButtonOnClick(Widgets::BacklogEntry* target);
   void Clear();
 
@@ -39,9 +39,6 @@ class BacklogMenu : public Menu {
   float PageUpDownWaitTime = 0.0f;
 
   void RenderHighlight() const;
-  virtual Widgets::BacklogEntry* CreateBacklogEntry(
-      int id, uint8_t* str, int audioId, glm::vec2 pos,
-      const RectF& hoverBounds) const;
 
   void UpdatePageUpDownInput(float dt);
   void UpdateScrollingInput(float dt);
