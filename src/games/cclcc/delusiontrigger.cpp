@@ -5,7 +5,7 @@
 #include "../../vm/interface/input.h"
 #include "../../profile/scriptvars.h"
 #include "../../src/video/videosystem.h"
-#include "../../inputsystem.h"
+#include "../../configsystem.h"
 
 namespace Impacto {
 namespace CCLCC {
@@ -94,7 +94,7 @@ void DelusionTrigger::Update(float dt) {
         if (LastDelusionState == DelusionState) {
           int padLeft = PAD1L2;
           int padRight = PAD1R2;
-          if (Input::DirectionalInputForTrigger) {
+          if (ConfigSystem::DirectionalInputForTrigger) {
             padLeft |= PAD1LEFT;
             padRight |= PAD1RIGHT;
           }
