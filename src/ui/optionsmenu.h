@@ -2,6 +2,7 @@
 
 #include "menu.h"
 #include "widgets/group.h"
+#include "../profile/configsystem.h"
 
 namespace Impacto {
 namespace UI {
@@ -12,7 +13,7 @@ class OptionsMenu : public Menu {
   virtual void Hide() override;
   virtual void Update(float dt) override;
   virtual void UpdateInput(float dt);
-  virtual void ResetToDefault() {};
+  virtual void ResetToDefault() { Profile::ConfigSystem::ResetToDefault(); };
 
  protected:
   OptionsMenu();
